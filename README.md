@@ -35,8 +35,8 @@ This application is not open for contributions.
 
 ## Walkthrough Videos
 
-[Startup and User Get/Post/Put/Delete Routes](https://youtu.be/oyf-95CjgE8)
-[Add friend / Thought Get & Put routes](https://youtu.be/K4FnlTrvvwA)
+[Startup and User Get/Post/Put/Delete Routes](https://youtu.be/oyf-95CjgE8) <br />
+[Add friend / Thought Get & Put routes](https://youtu.be/K4FnlTrvvwA) <br />
 [Reaction Post Route / Delete Routes and Thought Delete Route](https://youtu.be/6to5dE1eFyM)
 
 ## Questions
