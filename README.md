@@ -37,6 +37,7 @@ This application is not open for contributions.
 
 [Startup and User Get/Post/Put/Delete Routes](https://youtu.be/oyf-95CjgE8)
 [Add friend / Thought Get & Put routes](https://youtu.be/K4FnlTrvvwA)
+[Reaction Post Route / Delete Routes and Thought Delete Route](https://youtu.be/6to5dE1eFyM)
 
 ## Questions
 
