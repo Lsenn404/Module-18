@@ -36,6 +36,7 @@ This application is not open for contributions.
 ## Walkthrough Videos
 
 [Startup and User Get/Post/Put/Delete Routes](https://youtu.be/oyf-95CjgE8)
+[Add friend / Thought Get & Put routes](https://youtu.be/K4FnlTrvvwA)
 
 ## Questions
 
