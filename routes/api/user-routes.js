@@ -30,9 +30,23 @@ router.get("/:userId/friends", async (req, res) => {
 });
 
 //TODO - ROUTE THAT UPDATES A SINGLE USER
-router.put("/:userId", async (req, res) => {
-  const updatedUser = await User.findByIdAndUpdate();
+router.put("/:userId", (req, res) => {
+  User.findOneAndUpdate(
+    { _id: req.params.userId },
+    { $set: req.body },
+    { new: true },
+    (err, result) => {
+      if (result) {
+        res.status(200).json(result);
+        console.log(`Updated: ${result}`);
+      } else {
+        console.log('Uh Oh, something went wrong');
+        res.status(500).json({ message: 'something went wrong' });
+      }
+    }
+  );
 });
+
 
 //TODO - ROUTE THAT DELETES A SINGLE USER BASED ON USER ID
 router.delete("/:userId", async (req, res) => {
