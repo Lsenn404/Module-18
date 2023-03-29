@@ -23,6 +23,12 @@ router.get("/:userId", async (req, res) => {
   res.json(user);
 });
 
+router.get("/:userId/friends", async (req, res) => {
+  const user = await User.findById(req.params.userId);
+  const friendsList = user.getFriendsList();
+  res.json(friendsList);
+});
+
 //TODO - ROUTE THAT UPDATES A SINGLE USER
 router.put("/:userId", async (req, res) => {
   const updatedUser = await User.findByIdAndUpdate();
@@ -40,13 +46,34 @@ router.delete("/:userId", async (req, res) => {
 });
 
 //TODO - ROUTE THAT ADDS A FRIEND TO A USER
-router.put("/:userId/friends/:friendId", async (req, res) => {
+router.get("/:userId/friends/:friendId", async (req, res) => {
   const friend = await User.findById(req.params.friendId);
+  //   console.log(friend, "FRIEND");
+
   const user = await User.findById(req.params.userId);
-  user.addFriend.push(friend);
+  //   console.log(user, "USER");
+  if (user.addFriend(friend) === "Friend already exists!") {
+    res.json("user already has this friend");
+  } else {
+    res.json(user);
+  }
 });
 
 //TODO - ROUTE THAT DELETES A FRIEND FROM A USER'S FRIENDS, DONT DELETE THE FRIEND AS A USER THOUGH!
-router.delete("/:userId/friends/:friendId", (req, res) => {});
+router.get("/:userId/removefriends/:friendId", async (req, res) => {
+  const userId = req.params.userId;
+  const friendIdToRemove = req.params.friendId;
+
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { $pull: { friends: { _id: friendIdToRemove } } },
+      { new: true }
+    );
+    res.status(200).json(updatedUser);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 
 module.exports = router;

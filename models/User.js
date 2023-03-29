@@ -35,18 +35,29 @@ const userSchema = new Schema(
   }
 );
 
-userSchema.methods.addFriend = function (friend) {
-  this.friends.push(friend);
-  return this.save();
-};
-
 userSchema.methods.getId = function () {
   return this._id;
 };
 
-userSchema.methods.removeFriend = function (friendId) {
-  for (let i = 0; i < this.friends.length; i++) {
-    if (this.friends[i].getId() === friendId) {
+userSchema.methods.getFriendsList = function () {
+  return this.friends;
+};
+
+userSchema.methods.addFriend = function (friend) {
+  const friendsList = this.getFriendsList();
+  console.log(friendsList, "FRIENDSLIST");
+  if (friendsList.includes(friend.getId())) {
+    return "Friend already exists!";
+  }
+  this.friends.push(friend);
+  return this.save();
+};
+
+userSchema.methods.removeFriend = function (friend) {
+  const friendsList = this.getFriendsList();
+  console.log(friend, "LOGGING FRIEND")
+  for (let i = 0; i < friendsList.length; i++) {
+    if (friendsList[i] === friend) {
       this.friends.splice(i, 1);
       return this.save();
     }
