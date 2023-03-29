@@ -55,7 +55,7 @@ userSchema.methods.addFriend = function (friend) {
 
 userSchema.methods.removeFriend = function (friend) {
   const friendsList = this.getFriendsList();
-  console.log(friend, "LOGGING FRIEND")
+  console.log(friend, "LOGGING FRIEND");
   for (let i = 0; i < friendsList.length; i++) {
     if (friendsList[i] === friend) {
       this.friends.splice(i, 1);
