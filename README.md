@@ -27,6 +27,7 @@ This project is licensed under the MIT license.
 ## Contributing
 This application is not open for contributions.
 
+## Walkthrough Videos
 
 
 ## Questions
